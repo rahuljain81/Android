@@ -37,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
 
         timerTextView.setText("30s");
         playAgainButton.setVisibility(View.INVISIBLE);
+        button0.setClickable(true);
+        button1.setClickable(true);
+        button2.setClickable(true);
+        button3.setClickable(true);
         newQuestion();
 
         new CountDownTimer(30100, 1000 ) {
@@ -50,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
                 resultTextVoew.setText("Done!!");
                 playAgainButton.setVisibility(View.VISIBLE);
+                button0.setClickable(false);
+                button1.setClickable(false);
+                button2.setClickable(false);
+                button3.setClickable(false);
             }
         }.start();
     }
