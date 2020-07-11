@@ -67,7 +67,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAuth = FirebaseAuth.getInstance();
     }
 
-
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(MainActivity.this, "Back Button is being Pressed!", Toast.LENGTH_SHORT).show();
+        revokeAccess();
+        super.onBackPressed();
+    }
 
     public void onStart() {
         super.onStart();
@@ -77,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (currentUser != null) {
             Log.d(TAG, "Current User signed in" + currentUser.getEmail());
-            Toast.makeText( MainActivity.this, "Currently logged in" + currentUser.getEmail(), Toast.LENGTH_LONG).show();
+            Toast.makeText( MainActivity.this, "Currently logged in " + currentUser.getEmail(), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -144,6 +149,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             FirebaseUser user = mAuth.getCurrentUser();
                             Log.d (TAG, "signInWithCredential: success " + user.getEmail());
                             Toast.makeText(MainActivity.this, "Firebase Authentication Succeeded", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getApplicationContext(), afterSignIn.class);
+                            intent.putExtra("age", user.getEmail());
+                            startActivity(intent);
                         } else {
                             Log.d (TAG, "signInWithCredential: fail " + task.getException());
                             Toast.makeText(MainActivity.this, "Firebase Authentication Failed", Toast.LENGTH_LONG).show();
@@ -167,6 +175,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Log.w(TAG, "Signed out of google");
                     }
                 });
+
+        Intent intent = new Intent(getApplicationContext(), afterSignOut.class);
+        startActivity(intent);
     }
 
     private void revokeAccess() {
