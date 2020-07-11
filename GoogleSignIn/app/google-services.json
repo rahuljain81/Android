@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "313400661643",
+    "firebase_url": "https://testing-rahul-jain.firebaseio.com",
+    "project_id": "testing-rahul-jain",
+    "storage_bucket": "testing-rahul-jain.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:313400661643:android:1e05ab424d99d85d71e68e",
+        "android_client_info": {
+          "package_name": "com.example.googlesignin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "313400661643-5709a9lb84pmr1desck4m3dtubau0meg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQKp4qVOIDQB0CwZ2JNmpYfJIuq7kaekE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "313400661643-5709a9lb84pmr1desck4m3dtubau0meg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
