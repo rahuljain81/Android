@@ -50,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
       @Override
       public void done(ParseObject object, ParseException e) {
         if (e == null && object != null) {
+          //Updating code
+          object.put ("score", 85);
+          object.saveInBackground();
+
           Log.i ("Parse" , object.getString("username") + " " + Integer.toString(object.getInt("score")));
         }
         if (e != null) {
