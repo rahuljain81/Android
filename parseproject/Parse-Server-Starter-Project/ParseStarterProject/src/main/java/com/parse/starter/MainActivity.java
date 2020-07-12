@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                               }
                             });
 */
-  
+
     ParseUser.logInInBackground("RAHUL", "password", new LogInCallback() {
               @Override
               public void done(ParseUser user, ParseException e) {
@@ -113,6 +113,14 @@ public class MainActivity extends AppCompatActivity {
                 }
               }
             });
+
+    ParseUser.logOut();
+
+    if (ParseUser.getCurrentUser() !=  null) {
+        Log.i ("Parse", ParseUser.getCurrentUser().getUsername());
+    } else {
+        Log.i ("Parse", "Signed out");
+    }
 
     ParseAnalytics.trackAppOpenedInBackground(getIntent());
   }
