@@ -12,10 +12,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.parse.LogInCallback;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.parse.SignUpCallback;
 
 
 //Course: https://samsungu.udemy.com/course/the-complete-android-oreo-developer-course/learn/lecture/8339570#questions/11080474
@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
     });
 */
 
+/*
     //Setup user
     ParseUser user = new ParseUser();
     user.setUsername("RAHUL");
@@ -100,8 +101,20 @@ public class MainActivity extends AppCompatActivity {
                                   e.printStackTrace();
                               }
                             });
+*/
+  
+    ParseUser.logInInBackground("RAHUL", "password", new LogInCallback() {
+              @Override
+              public void done(ParseUser user, ParseException e) {
+                if (e == null) {
+                  Log.i ("Parse", "user logged in " + user.getEmail());
+                } else {
+                  e.printStackTrace();
+                }
+              }
+            });
 
-            ParseAnalytics.trackAppOpenedInBackground(getIntent());
+    ParseAnalytics.trackAppOpenedInBackground(getIntent());
   }
 
 }
