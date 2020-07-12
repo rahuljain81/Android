@@ -12,14 +12,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.parse.FindCallback;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
-import java.util.List;
 
+//Course: https://samsungu.udemy.com/course/the-complete-android-oreo-developer-course/learn/lecture/8339570#questions/11080474
 
 public class MainActivity extends AppCompatActivity {
 
@@ -65,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     });
 */
 
+/*
   //Download all data from server
     ParseQuery<ParseObject> query = ParseQuery.getQuery("Score");
 
@@ -82,8 +82,26 @@ public class MainActivity extends AppCompatActivity {
         }
       }
     });
+*/
 
-    ParseAnalytics.trackAppOpenedInBackground(getIntent());
+    //Setup user
+    ParseUser user = new ParseUser();
+    user.setUsername("RAHUL");
+    user.setPassword("password");
+    user.setEmail("rahuljain81@gmail.com");
+
+    user.signUpInBackground(new SignUpCallback() {
+                              @Override
+                              public void done(ParseException e) {
+                                if (e == null) {
+                                  //OK
+                                  Log.i ("Parse", "User is added");
+                                } else
+                                  e.printStackTrace();
+                              }
+                            });
+
+            ParseAnalytics.trackAppOpenedInBackground(getIntent());
   }
 
 }

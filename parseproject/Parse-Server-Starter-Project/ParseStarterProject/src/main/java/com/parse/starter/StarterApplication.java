@@ -12,7 +12,6 @@ import android.app.Application;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
-import com.parse.ParseUser;
 
 
 public class StarterApplication extends Application {
@@ -48,7 +47,7 @@ public class StarterApplication extends Application {
     });
 */
 
-    ParseUser.enableAutomaticUser();
+    //ParseUser.enableAutomaticUser();
 
     ParseACL defaultACL = new ParseACL();
     defaultACL.setPublicReadAccess(true);
