@@ -12,11 +12,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.parse.GetCallback;
+import com.parse.FindCallback;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 */
-
+/*
   //DOWNLOAD CODE
     ParseQuery<ParseObject> query = ParseQuery.getQuery("Score");
     query.getInBackground("UYD7NSM7Gs", new GetCallback<ParseObject>() {
@@ -55,6 +57,25 @@ public class MainActivity extends AppCompatActivity {
           object.saveInBackground();
 
           Log.i ("Parse" , object.getString("username") + " " + Integer.toString(object.getInt("score")));
+        }
+        if (e != null) {
+          e.printStackTrace();
+        }
+      }
+    });
+*/
+
+  //Download all data from server
+    ParseQuery<ParseObject> query = ParseQuery.getQuery("Score");
+
+    query.findInBackground(new FindCallback<ParseObject>() {
+      @Override
+      public void done(List<ParseObject> objects, ParseException e) {
+        if (e == null) {
+          if (objects.size() > 0) {
+            for (ParseObject object: objects)
+            Log.i("Parse", object.getString("username") + " " + Integer.toString(object.getInt("score")));
+          }
         }
         if (e != null) {
           e.printStackTrace();
